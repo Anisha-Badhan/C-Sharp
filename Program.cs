@@ -6,12 +6,18 @@ namespace ConsoleApp1
     {
         // Please don't use console.writeline inside the methods, call the methods from Main() and pass parameters.
 
+       
         static void Main(string[] args)
         {
             int[] arr = {1,2,3,4,5,6};
             ArrRotation(arr, 2);
         }
 
+        /*
+        * @param int a
+        * @param int b
+        * @return int
+       */
         public static int MyMethod(int a, int b)
         {
 
@@ -26,12 +32,21 @@ namespace ConsoleApp1
             return (a == 30 || b == 30 || (a + b) == 30);
         }
 
+        /*
+        * @param String str
+        * @return String
+       */
         public static String MyString(String str)
         {
             // Wrap the condition in () --> (str.StartsWith("IF") || str.StartsWith("if") || str.StartsWith("If"))
             return (str.StartsWith("IF") || str.StartsWith("if") || str.StartsWith("If") ? str : String.Concat("If", str));
         }
 
+        /*
+        * @param String str
+        * @param int index
+        * @return String
+       */
         public static String RmoveChr(String str, int index)
         {
             // Wrap the condition in ()
@@ -39,22 +54,38 @@ namespace ConsoleApp1
         }
 
         // Look for a Method called Substring() and try to do this question with that.
+        /*
+        * @param String str
+        * @return String
+       */
         public static String Exchange(String str)
         {
             return str.Length > 1 ? str.Substring(str.Length - 1) + str.Substring(1, str.Length - 2) + str.Substring(0, 1) : str;
         }
 
+        /*
+        * @param String str
+        * @return String
+       */
         public static String Repeat4times(String str)
         {
             return str.Length < 2 ? str : str.Substring(0, 2) + str.Substring(0, 2) + str.Substring(0, 2) + str.Substring(0, 2);
         }
 
+        /*
+        * @param String str
+        * @return String
+       */
         public static String Addchar(String str)
         {
             String s = str.Substring(str.Length - 1);
             return s + str + s;
         }
 
+        /*
+        * @param str
+        * @return String
+       */
         public static String AddStr(String str)
         {
             int StrLen = str.Length;
@@ -63,16 +94,31 @@ namespace ConsoleApp1
             return (StrLen < 3 ? str + str + str : str.Substring(0, 3) + str + str.Substring(0, 3));
         }
 
+        /*
+        * @param String str
+        * @return boolean
+       */
         public static bool Check4CHash(String str)
         {
             return (str.Equals("C#")) || (str.StartsWith("C#") && str[2] == ' ');
         }
 
+        /*
+        * @param int x
+        * @param int y
+        * @param int z
+        * @return boolean
+       */
         public static bool TestRange(int x, int y, int z)
         {
             return (x >= 20 && x <= 50) || (y >= 20 && y <= 50) || (z >= 20 && z <= 50);
         }
 
+        /*
+        * @param array arr
+        * @param int d
+        * @return void
+       */
         public static void ArrRotation(int[] arr, int d)
         {
             int[] arr1 = new int[arr.Length] ;
@@ -91,6 +137,7 @@ namespace ConsoleApp1
         }
 
         public static String 
+        
     }
             
 } 
