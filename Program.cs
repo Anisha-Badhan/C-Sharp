@@ -6,11 +6,23 @@ namespace ConsoleApp1
     {
         // Please don't use console.writeline inside the methods, call the methods from Main() and pass parameters.
 
-       
+
         static void Main(string[] args)
         {
-            int[] arr = {1,2,3,4,5,6};
-            ArrRotation(arr, 2);
+            Console.WriteLine(print_subStr("HelloWorld", "1 4"));
+            String[] arr = { "Julia", "Samantha", "Samantha_21", "1samantha", "Samatha?10_2A", "_juliaoo7" };
+            name_validity(5, arr);
+            String[] param = { "lmnop", "bcxz" };
+
+            string[] result = funnyString(param);
+
+            for (int i = 0; i < result.Length; i++)
+            {
+                Console.WriteLine(result[i]);
+
+            }
+            String[] z = {"ABBAB","AABBA","AmABB"};
+            noRepeat(3,z);
         }
 
         /*
@@ -22,7 +34,7 @@ namespace ConsoleApp1
         {
 
             // This is good, but can you try to use Ternary Opertor here to make it compact.
-            
+
             return (a == b ? 3 * (a + b) : a + b);
         }
 
@@ -121,12 +133,12 @@ namespace ConsoleApp1
        */
         public static void ArrRotation(int[] arr, int d)
         {
-            int[] arr1 = new int[arr.Length] ;
-            for(int i = d; i < arr.Length; i++)
+            int[] arr1 = new int[arr.Length];
+            for (int i = d; i < arr.Length; i++)
             {
-                arr1[i-d] = arr[i];
+                arr1[i - d] = arr[i];
             }
-            for (int i = 0; i < d; i++) 
+            for (int i = 0; i < d; i++)
             {
                 arr1.SetValue(arr[i], arr.Length - d + i);
             }
@@ -136,10 +148,139 @@ namespace ConsoleApp1
             }
         }
 
-        public static String 
-        
+        /*
+         * @param String
+         * @param String
+         * @return String
+         */
+        public static String print_subStr(String str, String index)
+        {
+            String[] indices = (index.Split(" "));
+            int start = Convert.ToInt32(indices[0]);
+            int end = Convert.ToInt32(indices[1]);
+            int n = str.Length;
+            foreach (Char c in str)
+            {
+                if (!Char.IsLetter(c))
+                {
+                    Console.WriteLine("please enter a valid string");
+                }
+            }
+            if (start < 0 || start >= end || end > n)
+            {
+                Console.WriteLine("Enter valid indices");
+            }
+            int length = end - start + 1;
+            return str.Substring(start, length);
+        }
+
+        /*
+         * @param int n
+         * @paran Array
+         * @return void
+        */
+        public static void name_validity(int n, String[] arr)
+        {
+            String x = "";
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i].Length < 8 || arr[i].Length > 30)
+                {
+                    Console.WriteLine(arr[i] + " Invalid Name");
+                }
+                else
+                {
+                    x = arr[i];
+                    int m = 0;
+                    if (!Char.IsLetter(x[0]))
+                    {
+                        Console.WriteLine(x + " Invalid Name");
+                    }
+                    else
+                    {
+                        for (int j = 1; j < x.Length; j++)
+                        {
+                            if ((int)x[j] < 47 || ((int)x[j] >= 58 && (int)x[j] <= 64) || ((int)x[j] >= 91 && (int)x[j] <= 94) || (int)x[j] == 93)
+                            {
+                                m = m + 1;
+                            }
+                        }
+                        Console.WriteLine(m != 0 ? x + " Invalid Name" : x + " Valid name");
+                    }
+                }
+            }
+        }
+        /*
+        * @param int q
+        * @param string[] s
+        * @return String[]
+        */
+        public static String[] funnyString(int q, String[] s)
+        {
+            String[] results = new string[q];
+
+            for (int k = 0; k < s.Length; k++)
+            {
+                char[] arr = s[k].ToCharArray();
+                Array.Reverse(arr);
+                String r = new string(arr);
+                int temp = 0;
+                for (int i = 1; i < arr.Length; i++)
+                {
+                    int x = Math.Abs((int)s[k][i] - (int)s[k][i - 1]);
+                    int y = Math.Abs((int)r[i] - (int)r[i - 1]);
+                    if (x != y)
+                    {
+                        temp = temp + 1;
+                    }
+                }
+                results[k] = (temp != 0 ? "Not funny" : "Funny string");
+            }
+
+            return results;
+
+        }
+
+        /*
+         * @param int q
+         * @param String[] s
+         * @return void
+         */
+        public static void noRepeat(int q, String[] s)
+        {
+            for(int k = 0; k < s.Length; k++)
+            {
+                int temp = 0;
+                int invalid = 0;
+                for (int i = 0; i < s[k].Length; i++)
+                {
+                    if (s[k][i] != 'A' && s[k][i] != 'B')
+                    {
+                        invalid += 1;
+                    }
+                    else
+                    {
+                        if (i == 0)
+                        {
+                            continue;
+                        }
+                        else if (s[k][i] == s[k][i - 1])
+                        {
+                            temp += 1;
+                        }
+                    }
+                }
+                if (invalid != 0)
+                {
+                    Console.WriteLine(s[k]+"  Invalid string");
+                }
+                else
+                {
+                    Console.WriteLine(s[k]+"  "+temp);
+                }
+            }
+        }
     }
-            
-} 
+}
         
 
