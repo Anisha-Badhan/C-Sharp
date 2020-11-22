@@ -14,7 +14,7 @@ namespace ConsoleApp1
             name_validity(5, arr);
             String[] param = { "lmnop", "bcxz" };
 
-            string[] result = funnyString(param);
+            string[] result = funnyString(2,param);
 
             for (int i = 0; i < result.Length; i++)
             {
@@ -278,7 +278,7 @@ namespace ConsoleApp1
                 {
                     Console.WriteLine(s[k]+"  "+temp);
                 }
-            } hello;
+            } 
         }
     }
 }
