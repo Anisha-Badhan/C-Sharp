@@ -277,7 +277,7 @@ namespace ConsoleApp1
                 else
                 {
                     Console.WriteLine(s[k]+"  "+temp);
-                }
+                }Hello hello
             } 
         }
     }
